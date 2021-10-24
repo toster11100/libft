@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *us;
-	char uc;
+	char	*us;
+	char	uc;
 
 	us = (char *)s;
 	uc = (char)c;

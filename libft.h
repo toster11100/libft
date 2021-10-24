@@ -6,7 +6,7 @@
 /*   By: ssedgeki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 21:07:06 by ssedgeki          #+#    #+#             */
-/*   Updated: 2021/10/11 21:07:08 by ssedgeki         ###   ########.fr       */
+/*   Updated: 2021/10/25 01:34:46 by ssedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 #endif
