@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ssedgeki <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/11 18:02:00 by ssedgeki          #+#    #+#              #
-#    Updated: 2021/10/11 22:38:26 by ssedgeki         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME	=	libft.a
 
 SRCS	=	ft_isalpha.c\
@@ -31,7 +19,8 @@ SRCS	=	ft_isalpha.c\
 		ft_strncmp.c\
 		ft_memchr.c\
 		ft_memcmp.c\
-		ft_strnstr.c
+		ft_strnstr.c\
+		ft_atoi.c
 
 HEADER	=	libft.h
 
