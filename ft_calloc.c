@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssedgeki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 23:49:09 by ssedgeki          #+#    #+#             */
-/*   Updated: 2021/11/07 23:49:15 by ssedgeki         ###   ########.fr       */
+/*   Created: 2021/11/10 23:25:07 by ssedgeki          #+#    #+#             */
+/*   Updated: 2021/11/10 23:25:11 by ssedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
-int	ft_atoi(const char *str)
+void	*ft_calloc(size_t count, size_t size)
 {
-	long	i;
-	int		neg;
+	size_t	i;
+	char	*res;
 
 	i = 0;
-	neg = 1;
-	while (*str == ' ' || (*str > 8 && *str < 14))
-		str++;
-	if (*str == '+' || *str == '-')
+	res = malloc(count * size);
+	if (!res)
+		return (0);
+	while (i < count * size)
 	{
-		if (*str == '-')
-			neg = -1;
-		str++;
+		res[i] = 0;
+		i++;
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		if (i > INT_MAX && neg == 1)
-			return (-1);
-		if (i < INT_MIN + 1 && neg == -1)
-			return (0);
-		i *= 10;
-		i += *str - '0';
-		str++;
-	}
-	return (i * neg);
+	return (res);
 }
