@@ -32,6 +32,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		res[i] = s[i + start];
 		i++;
 	}
-	res[i] = 0;
+	res[i] = '\0';
 	return (res);
 }
