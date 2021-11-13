@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssedgeki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssedgeki <ssedgeki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 17:38:30 by ssedgeki          #+#    #+#             */
-/*   Updated: 2021/11/13 17:38:32 by ssedgeki         ###   ########.fr       */
+/*   Updated: 2021/11/13 20:30:40 by ssedgeki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*fin(char *res, int len, int n)
+static char	*fin(char *res, int len, int n)
 {
 	int	i;
 	int	neg;
@@ -33,7 +33,7 @@ char	*fin(char *res, int len, int n)
 	return (res);
 }
 
-int	get_len(int n)
+static int	get_len(int n)
 {
 	int	len;
 
