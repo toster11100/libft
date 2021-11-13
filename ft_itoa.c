@@ -12,26 +12,43 @@
 
 #include "libft.h"
 
-int	absolute_value(int nbr)
+char	*fin(char *res, int len, int n)
 {
-	if (nbr < 0)
-		return (-nbr);
-	return (nbr);
+	int	i;
+	int	neg;
+
+	if (n < 0)
+	{
+		n = n * (-1);
+		neg = 1;
+	}
+	while (n > 0)
+	{
+		i = n % 10;
+		res[--len] = i + '0';
+		n = n / 10;
+	}
+	if (neg == 1)
+		res[0] = '-';
+	return (res);
 }
 
-int	get_len(int nbr)
+int	get_len(int n)
 {
 	int	len;
 
 	len = 0;
-	if (nbr <= 0)
-		len++;
-	while (nbr != 0)
+	if (n < 0)
 	{
 		len++;
-		nbr = nbr / 10;
+		n = n * (-1);
 	}
-	return (len);
+	while (n >= 10)
+	{
+		n = n / 10;
+		len++;
+	}
+	return (len + 1);
 }
 
 char	*ft_itoa(int n)
@@ -39,20 +56,16 @@ char	*ft_itoa(int n)
 	char	*res;
 	int		len;
 
+	if (n == -2147483648)
+	{
+		return (ft_strdup("-2147483648"));
+	}
+	if (n == 0)
+		return (ft_strdup("0"));
 	len = get_len(n);
 	res = malloc(len + 1);
 	if (!res)
 		return (0);
 	res[len] = '\0';
-	if (n < 0)
-		res[0] = '-';
-	else if (n == 0)
-		res[0] = '0';
-	while (n != 0)
-	{
-		--len;
-		res[len] = absolute_value(n % 10) + '0';
-		n /= 10;
-	}
-	return (res);
+	return (fin(res, len, n));
 }
