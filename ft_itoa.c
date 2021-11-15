@@ -63,7 +63,7 @@ char	*ft_itoa(int n)
 	if (n == 0)
 		return (ft_strdup("0"));
 	len = get_len(n);
-	res = malloc(len + 1);
+	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (0);
 	res[len] = '\0';

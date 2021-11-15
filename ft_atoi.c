@@ -11,32 +11,25 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 int	ft_atoi(const char *str)
 {
 	long		i;
-	int			neg;
+	int			sing;
 
 	i = 0;
-	neg = 1;
+	sing = 1;
 	while (*str == ' ' || (*str > 8 && *str < 14))
 		str++;
+	if (*str == '-')
+		sing = -1;
 	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			neg = -1;
 		str++;
-	}
 	while (*str >= '0' && *str <= '9')
 	{
-		if (i > INT_MAX && neg == 1)
-			return (-1);
-		if (i < INT_MIN + 1 && neg == -1)
-			return (0);
 		i *= 10;
 		i += *str - '0';
 		str++;
 	}
-	return (i * neg);
+	return (i * sing);
 }

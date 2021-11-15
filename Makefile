@@ -39,7 +39,7 @@ HEADER	=	libft.h
 
 OBJ	=	$(SRCS:%.c=%.o)
 CC	=	cc
-CFLAGS	=	-Wall -Wextra -Werror -I$(HEADER)
+CFLAGS	=	-Wall -Wextra -Werror -O2
 
 .PHONY	:	all clean fclean re
 
@@ -48,7 +48,7 @@ all	:	$(NAME)
 $(NAME)	:	$(OBJ) $(HEADER)
 		ar rcs $(NAME) $?
 
-%.o	:	%.c $(HEADER)
+%.o	: %.c $(HEADER)
 		$(CC) $(FLAGS) -c $< -o $@
 
 clean	:
