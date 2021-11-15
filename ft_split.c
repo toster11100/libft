@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 static int	ft_len(char const *s, char c)
@@ -33,7 +32,7 @@ static void	ft_free(char **res, int i)
 	free(res);
 }
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+static char	*ft_cpy(char *dst, const char *src, size_t len)
 {
 	size_t	i;
 
@@ -43,19 +42,14 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 		dst[i] = src[i];
 		i++;
 	}
-	while (i < len)
-	{
-		dst[i] = '\0';
-		i++;
-	}
 	return (dst);
 }
 
-static char **get_words(const char *s, char c, int c_word, char **res)
+static char	**get_words(const char *s, char c, int c_word, char **res)
 {
-	int     i;
-	int     k;
-	int     len;
+	int		i;
+	int		k;
+	int		len;
 
 	i = 0;
 	k = 0;
@@ -70,7 +64,7 @@ static char **get_words(const char *s, char c, int c_word, char **res)
 			ft_free(res, k);
 			return (0);
 		}
-		ft_strncpy(res[k], s + i, len);
+		ft_cpy(res[k], s + i, len);
 		res[k][len] = '\0';
 		k++;
 		while (s[i] && s[i] != c)
@@ -80,11 +74,11 @@ static char **get_words(const char *s, char c, int c_word, char **res)
 	return (res);
 }
 
-char    **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char    **res;
-	int     c_word;
-	int     i;
+	char	**res;
+	int		c_word;
+	int		i;
 
 	if (!s)
 		return (0);
