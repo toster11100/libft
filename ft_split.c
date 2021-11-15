@@ -13,95 +13,96 @@
 
 #include "libft.h"
 
-static int  ft_len(char const *s, char c)
+static int	ft_len(char const *s, char c)
 {
-    int     i;
+	int		i;
 
-    i = 0;
-    while (s[i] && s[i] != c)
-        i++;
-    return (i);
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
 }
 
-static void ft_free(char **res, int i)
+static void	ft_free(char **res, int i)
 {
-    while (i--)
-    {
-        free(res[i]);
-        res[i] = 0;
-    }
-    free(res);
+	while (i--)
+	{
+		free(res[i]);
+		res[i] = 0;
+	}
+	free(res);
 }
 
-char    *ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-    size_t  i;
+	size_t	i;
 
-    i = 0;
-    while (i < len && src[i] != '\0')
-    {
-        dst[i] = src[i];
-        i++;
-    }
-    while (i < len)
-    {
-        dst[i] = '\0';
-        i++;
-    }
-    return (dst);
+	i = 0;
+	while (i < len && src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	while (i < len)
+	{
+		dst[i] = '\0';
+		i++;
+	}
+	return (dst);
 }
 
 static char **get_words(const char *s, char c, int c_word, char **res)
 {
-    int     i;
-    int     k;
-    int     len;
+	int     i;
+	int     k;
+	int     len;
 
-    i = 0;
-    k = -1;
-    while (++k < c_word)
-    {
-        while (s[i] == c)
-            i++;
-        len = ft_len(s + i, c);
-        res[k] = (char *)malloc(sizeof(char *) * (len + 1));
-        if (!res[k])
-        {
-            ft_free(res, k);
-            return (0);
-        }
-        ft_strncpy(res[k], s + i, len);
-        res[k][len] = '\0';
-        while (s[i] && s[i] != c)
-            i++;
-    }
-    res[k] = 0;
-    return (res);
+	i = 0;
+	k = 0;
+	while (k < c_word)
+	{
+		while (s[i] == c)
+			i++;
+		len = ft_len(s + i, c);
+		res[k] = (char *)malloc(sizeof(char) * (len + 1));
+		if (!res[k])
+		{
+			ft_free(res, k);
+			return (0);
+		}
+		ft_strncpy(res[k], s + i, len);
+		res[k][len] = '\0';
+		k++;
+		while (s[i] && s[i] != c)
+			i++;
+	}
+	res[k] = 0;
+	return (res);
 }
 
 char    **ft_split(char const *s, char c)
 {
-    char    **res;
-    int     c_word;
-    int     i;
+	char    **res;
+	int     c_word;
+	int     i;
 
-    if (!s)
-        return (0);
-    i = 0;
-    c_word = 0;
-    while (s[i])
-    {
-        while (s[i] == c)
-            i++;
-        if (s[i])
-        {
-            c_word++;
-            while (s[i] && s[i] != c)
-                i++;
-        }
-    }
-    res = (char **)malloc(sizeof(char *) * (c_word + 1));
-    if (!res)
-        return (0);
-    return (get_words(s, c, c_word, res));
+	if (!s)
+		return (0);
+	i = 0;
+	c_word = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i])
+		{
+			c_word++;
+			while (s[i] && s[i] != c)
+				i++;
+		}
+	}
+	res = (char **)malloc(sizeof(char *) * (c_word + 1));
+	if (!res)
+		return (0);
+	return (get_words(s, c, c_word, res));
 }
